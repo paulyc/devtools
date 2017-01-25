@@ -210,3 +210,6 @@ for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 
 
 echo "" >> ~/.bash_profile
 echo ". $PWD/.bash_profile" >> ~/.bash_profile
+
+echo "Enable syntax highlighting in vim"
+echo ":syntax on" >> ~/.vimrc

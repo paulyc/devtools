@@ -209,5 +209,4 @@ echo "Kill affected applications"
 for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
 
 echo "" >> ~/.bash_profile
-echo "export CLICOLOR=1" >> ~/.bash_profile
-echo "export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx" >> ~/.bash_profile
+echo ". $PWD/.bash_profile" >> ~/.bash_profile

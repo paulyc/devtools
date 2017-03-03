@@ -213,3 +213,6 @@ echo ". $PWD/.bash_profile" >> ~/.bash_profile
 
 echo "Enable syntax highlighting in vim"
 echo ":syntax on" >> ~/.vimrc
+
+echo "Finder search current folder by default"
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"

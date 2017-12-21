@@ -216,3 +216,6 @@ echo ":syntax on" >> ~/.vimrc
 
 echo "Finder search current folder by default"
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+echo "Show hidden files in finder"
+defaults write com.apple.finder AppleShowAllFiles YES

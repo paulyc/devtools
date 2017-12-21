@@ -1,0 +1,4 @@
+[submodule "platform/posix/generic/bash-git-prompt"]
+	path = platform/posix/generic/bash-git-prompt
+	url = https://github.com/magicmonty/bash-git-prompt.git
+	ignore = dirty

@@ -219,3 +219,10 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
 echo "Show hidden files in finder"
 defaults write com.apple.finder AppleShowAllFiles YES
+
+#echo "enable/disable swapfile"
+#launchctl unload -wF /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist
+#rm -f /var/vm/swapfile*
+
+#echo "enable/disable spotlight"
+#mdutil -a -i off

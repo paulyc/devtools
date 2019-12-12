@@ -1,7 +1,4 @@
-#!/usr/bin/env bash -x
-cd $(dirname $0)
-
-cp -r ../generic/bash-git-prompt ~/.bash-git-prompt
+cp -rv $(dirname $0)/../generic/bash-git-prompt ~/.bash-git-prompt
 cat <<EOF >> ~/.bashrc
 ### bash-git-prompt config ###
    # Set config variables first
@@ -28,5 +25,3 @@ cat <<EOF >> ~/.bashrc
    source ~/.bash-git-prompt/gitprompt.sh
 ### end bash-git-prompt config ###
 EOF
-
-[ -x ../generic/post_setup.sh ] && ../generic/post_setup.sh

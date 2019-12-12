@@ -13,7 +13,11 @@ SUBDIRS = $(sort $(dir $(wildcard */Makefile)))
 
 .PHONY: subdirs $(SUBDIRS)
 
-all: subdirs
+all: submodules subdirs
+
+submodules:
+	git submodule update --init
+.PHONY: modules
 
 subdirs: $(SUBDIRS)
 

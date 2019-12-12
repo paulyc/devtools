@@ -2,9 +2,6 @@
 	path = platform/posix/generic/bash-git-prompt
 	url = https://github.com/magicmonty/bash-git-prompt.git
 	ignore = dirty
-[submodule "common/go/repo"]
-	path = common/go/repo
-	url = https://go.googlesource.com/go
 [submodule "common/node/nvm"]
 	path = common/node/nvm
 	url = https://github.com/creationix/nvm.git

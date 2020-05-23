@@ -1,3 +1,8 @@
+SRCARCH := x86
+
+_:
+	$(MAKE) -f Makefile.linux
+
 # Default:
 #   just run make in any subdirectory containing a Makefile.
 # To recurse this behavior into a subdirectory, 

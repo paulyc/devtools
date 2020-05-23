@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: GPL-2.0
+#
+# For a description of the syntax of this configuration file,
+# see Documentation/kbuild/kconfig-language.rst.
+#
+mainmenu "devtools/$(ARCH) Configuration"
+
+comment "Compiler: $(CC_VERSION_TEXT)"
+
+source "Kconfig.include"
+
+source "common/Kconfig"
+
+source "platform/Kconfig"

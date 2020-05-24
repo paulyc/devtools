@@ -632,7 +632,7 @@ endif
 export KBUILD_MODULES KBUILD_BUILTIN
 
 ifdef need-config
-include config/default.conf
+include default.conf
 endif
 
 ifeq ($(KBUILD_EXTMOD),)

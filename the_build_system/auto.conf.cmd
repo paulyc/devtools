@@ -1,6 +1,8 @@
 deps_config := \
-	common/Kconfig \
-	platform/Kconfig \
+	../linux/Kconfig \
+	../macos/Kconfig \
+	../posix/Kconfig \
+	../node/Kconfig \
 	Kconfig.include \
 	Kconfig
 

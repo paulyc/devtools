@@ -12,15 +12,15 @@ config 64BIT
 config X86
 	def_bool y
 
-config AMD64
+config X86_64
 	def_bool y
 	depends on X86 && 64BIT
 
-config I386
+config X86_32
 	def_bool y
 	depends on X86 && !64BIT
 
 config OUTPUT_FORMAT
 	string
-	default "elf32-i386" if I386
-	default "elf64-x86-64" if AMD64
+	default "elf32-i386" if X86_32
+	default "elf64-x86-64" if X86_64

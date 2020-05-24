@@ -7,9 +7,9 @@ mainmenu "devtools/$(ARCH) Configuration"
 
 comment "Compiler: $(CC_VERSION_TEXT)"
 
-source "config/Kconfig.include"
+source "Kconfig.include"
 
-source "arch/Kconfig"
+source "Kconfig.x86"
 
 source "../linux/Kconfig"
 
@@ -19,4 +19,4 @@ source "../node/Kconfig"
 
 source "../posix/Kconfig"
 
-source "config/default.conf"
+#source "config/default.conf"

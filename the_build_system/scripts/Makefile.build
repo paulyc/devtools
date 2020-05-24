@@ -34,7 +34,7 @@ subdir-asflags-y :=
 subdir-ccflags-y :=
 
 # Read auto.conf if it exists, otherwise ignore
--include config/auto.conf
+-include auto.conf
 
 include scripts/Kbuild.include
 

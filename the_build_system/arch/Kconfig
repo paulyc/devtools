@@ -1,0 +1,26 @@
+config LINUX
+	def_bool y
+	select X86
+
+config 64BIT
+	bool "64-bit kernel" if "$(ARCH)" = "x86"
+	default "$(ARCH)" != "i386"
+	---help---
+	Say yes for x86_64 (amd64) platform
+	Say no for i386 platform
+
+config X86
+	def_bool y
+
+config AMD64
+	def_bool y
+	depends on X86 && 64BIT
+
+config I386
+	def_bool y
+	depends on X86 && !64BIT
+
+config OUTPUT_FORMAT
+	string
+	default "elf32-i386" if I386
+	default "elf64-x86-64" if AMD64

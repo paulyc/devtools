@@ -264,7 +264,7 @@ single-targets := %.a %.i %.ko %.lds %.ll %.lst %.mod %.o %.s %.symtypes %/
 config-build	:=
 mixed-build	:=
 need-config	:= 1
-may-sync-config	:= 1
+may-sync-config	:=
 single-build	:=
 
 ifneq ($(filter $(no-dot-config-targets), $(MAKECMDGOALS)),)
@@ -332,8 +332,7 @@ __build_one_by_one:
 
 else # !mixed-build
 
-#include scripts/Kbuild.include
-include Kbuild.include
+include scripts/Kbuild.include
 
 # Read KERNELRELEASE from include/config/kernel.release (if it exists)
 KERNELRELEASE = $(shell cat include/config/kernel.release 2> /dev/null)
@@ -582,11 +581,12 @@ ifdef config-build
 include arch/$(SRCARCH)/Makefile
 export KBUILD_DEFCONFIG KBUILD_KCONFIG CC_VERSION_TEXT
 
-config: outputmakefile scripts_basic FORCE
-	$(Q)$(MAKE) $(build)=scripts/kconfig $@
+#config: outputmakefile scripts_basic FORCE
+config: outputmakefile FORCE
+	$(Q)$(MAKE) $(build)=config/Makefile.kconfig $@
 
 %config: outputmakefile scripts_basic FORCE
-	$(Q)$(MAKE) $(build)=scripts/kconfig $@
+	$(Q)$(MAKE) $(build)=config/Makefile.kconfig $@
 
 else #!config-build
 # ===========================================================================
@@ -632,7 +632,7 @@ endif
 export KBUILD_MODULES KBUILD_BUILTIN
 
 ifdef need-config
-include include/config/auto.conf
+include config/default.conf
 endif
 
 ifeq ($(KBUILD_EXTMOD),)
@@ -673,7 +673,8 @@ export RETPOLINE_VDSO_CFLAGS
 
 #include arch/$(SRCARCH)/Makefile
 #include Makefile.$(SRCARCH)
-include Makefile.x86
+
+#include arch/Makefile.x86
 
 ifdef need-config
 ifdef may-sync-config
@@ -681,7 +682,7 @@ ifdef may-sync-config
 # changes are detected. This should be included after arch/$(SRCARCH)/Makefile
 # because some architectures define CROSS_COMPILE there.
 #include include/config/auto.conf.cmd
-include auto.conf.cmd
+include config/auto.conf.cmd
 
 $(KCONFIG_CONFIG):
 	@echo >&2 '***'
@@ -705,9 +706,9 @@ else # !may-sync-config
 # External modules and some install targets need include/generated/autoconf.h
 # and include/config/auto.conf but do not care if they are up-to-date.
 # Use auto.conf to trigger the test
-PHONY += include/config/auto.conf
+PHONY += config/auto.conf
 
-include/config/auto.conf:
+config/auto.conf:
 	$(Q)test -e include/generated/autoconf.h -a -e $@ || (		\
 	echo >&2;							\
 	echo >&2 "  ERROR: Kernel configuration is invalid.";		\
@@ -1145,15 +1146,17 @@ prepare0: archprepare
 	$(Q)$(MAKE) $(build)=.
 
 # All the preparing..
-prepare: prepare0 prepare-objtool
+#prepare: prepare0 prepare-objtool
+prepare: ;
 
 # Support for using generic headers in asm-generic
 asm-generic := -f $(srctree)/scripts/Makefile.asm-generic obj
 
 PHONY += asm-generic uapi-asm-generic
-asm-generic: uapi-asm-generic
-	$(Q)$(MAKE) $(asm-generic)=arch/$(SRCARCH)/include/generated/asm \
-	generic=include/asm-generic
+asm-generic: ;
+#asm-generic: uapi-asm-generic
+#	$(Q)$(MAKE) $(asm-generic)=arch/$(SRCARCH)/include/generated/asm \
+#	generic=include/asm-generic
 uapi-asm-generic:
 	$(Q)$(MAKE) $(asm-generic)=arch/$(SRCARCH)/include/generated/uapi/asm \
 	generic=include/uapi/asm-generic
@@ -1235,7 +1238,8 @@ headers_check:
 	@:
 
 ifdef CONFIG_HEADERS_INSTALL
-prepare: headers
+#prepare: headers
+prepare: ;
 endif
 
 PHONY += scripts_unifdef

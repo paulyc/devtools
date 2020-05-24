@@ -1,7 +1,7 @@
-[submodule "platform/posix/generic/bash-git-prompt"]
-	path = platform/posix/generic/bash-git-prompt
+[submodule "posix/bash-git-prompt"]
+	path = posix/bash-git-prompt
 	url = https://github.com/paulyc/bash-git-prompt.git
 	ignore = dirty
-[submodule "common/node/nvm"]
-	path = common/node/nvm
+[submodule "node/nvm"]
+	path = node/nvm
 	url = https://github.com/paulyc/nvm.git
